@@ -1,14 +1,14 @@
-import axios from 'axios'
+import axios from '../utils/axios';
 
 
-export const currentUser = async (token) => await axios.post('http://localhost:8888/api/current-user', {}, {
+export const currentUser = async (token) => await axios.post('/api/current-user', {}, {
     headers: {
         Authorization: `Bearer ${token}`
     }
 })
 
 export const currentAdmin = async (token) => {
-    return await axios.post('http://localhost:8888/api/current-admin', {}, {
+    return await axios.post('/api/current-admin', {}, {
         headers: {
             Authorization: `Bearer ${token}`
         }

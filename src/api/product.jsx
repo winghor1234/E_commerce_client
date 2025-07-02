@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from "../utils/axios";
 
 export const createProduct = async (token, form) => {
   // code body
-  return axios.post("http://localhost:8888/api/product", form, {
+  return axios.post("/api/product", form, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -11,12 +11,12 @@ export const createProduct = async (token, form) => {
 
 export const listProduct = async (count = 20) => {
   // code body
-  return axios.get("http://localhost:8888/api/products/" + count);
+  return axios.get("/api/products/" + count);
 };
 
 export const readProduct = async (token, id) => {
   // code body
-  return axios.get("http://localhost:8888/api/product/" + id, {
+  return axios.get("/api/product/" + id, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -24,7 +24,7 @@ export const readProduct = async (token, id) => {
 };
 export const deleteProduct = async (token, id) => {
   // code body
-  return axios.delete("http://localhost:8888/api/product/" + id, {
+  return axios.delete("/api/product/" + id, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -32,7 +32,7 @@ export const deleteProduct = async (token, id) => {
 };
 export const updateProduct = async (token, id, form) => {
   // code body
-  return axios.put("http://localhost:8888/api/product/" + id, form, {
+  return axios.put("/api/product/" + id, form, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -43,7 +43,7 @@ export const uploadFiles = async (token, form) => {
   // code
   // console.log('form api frontent', form)
   return axios.post(
-    "http://localhost:8888/api/images",
+    "/api/images",
     {
       image: form,
     },
@@ -59,7 +59,7 @@ export const removeFiles = async (token, public_id) => {
   // code
   // console.log('form api frontent', form)
   return axios.post(
-    "http://localhost:8888/api/removeimages",
+    "/api/removeimages",
     {
       public_id,
     },
@@ -73,12 +73,12 @@ export const removeFiles = async (token, public_id) => {
 
 export const searchFilters = async (arg) => {
   // code body
-  return axios.post("http://localhost:8888/api/search/filters", arg);
+  return axios.post("/api/search/filters", arg);
 };
 
 export const listProductBy = async (sort, order, limit) => {
   // code body
-  return axios.post("http://localhost:8888/api/productby", {
+  return axios.post("/api/productby", {
     sort,
     order,
     limit,
