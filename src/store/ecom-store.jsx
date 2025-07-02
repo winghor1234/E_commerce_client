@@ -4,6 +4,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { listCategory } from "../api/Category";
 import { listProduct, searchFilters } from "../api/product";
 import _ from "lodash";
+// import { act } from "react";
 
 const ecomStore = (set, get) => ({
   user: null,
@@ -49,11 +50,15 @@ const ecomStore = (set, get) => ({
     }, 0);
   },
   actionLogin: async (form) => {
-    const res = await axios.post("http://localhost:5001/api/login", form);
+    const res = await axios.post("http://localhost:8888/api/login", form);
     set({
       user: res.data.payload,
       token: res.data.token,
     });
+    return res;
+  },
+  actionRegister: async (form) => {
+    const res = await axios.post("http://localhost:8888/api/register", form);
     return res;
   },
   getCategory: async () => {

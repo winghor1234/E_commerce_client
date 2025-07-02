@@ -1,6 +1,6 @@
 // rafce
-import React, { useState, useEffect } from 'react'
-import { createCategory, listCategory, removeCategory } from '../../api/Category'
+import  { useState, useEffect } from 'react'
+import { createCategory, removeCategory } from '../../api/Category'
 import useEcomStore from '../../store/ecom-store'
 import { toast } from 'react-toastify'
 
@@ -21,12 +21,12 @@ const FormCategory = () => {
         // code
         e.preventDefault()
         if (!name) {
-            return toast.warning('Please fill data')
+            return toast.warning('ກະລຸນາໃສ່ຊື່ ໝວດໝູ່')
         }
         try {
             const res = await createCategory(token, { name })
             console.log(res.data.name)
-            toast.success(`Add Category ${res.data.name} success!!!`)
+            toast.success(`ເພີ່ມ ໝວດໝູ່ ${res.data.name} ສຳເລັດ`)
             getCategory(token)
         } catch (err) {
             console.log(err)
@@ -37,7 +37,7 @@ const FormCategory = () => {
         try{
             const res = await removeCategory(token,id)
             console.log(res)
-            toast.success(`Deleted ${res.data.name} success`)
+            toast.success(`ລົບໝວດໝູ່ ${res.data.name} ສຳເລັດ`)
             getCategory(token)
         }catch(err){
             console.log(err)
@@ -47,14 +47,14 @@ const FormCategory = () => {
 
     return (
         <div className='container mx-auto p-4 bg-white shadow-md'>
-            <h1>Category Management</h1>
+            <h1>ຈັດການ ໝວດໝູ່</h1>
             <form className='my-4' onSubmit={handleSubmit}>
                 <input
                     onChange={(e) => setName(e.target.value)}
                     className='border'
                     type='text'
                 />
-                <button className='bg-blue-500'>Add Category</button>
+                <button className='bg-blue-500'>ເພີ່ມໝວດໝູ່</button>
             </form>
 
             <hr />
@@ -73,7 +73,7 @@ const FormCategory = () => {
                             <button
                             className='bg-red-500'
                             onClick={()=>handleRemove(item.id)}
-                            >Delete</button>
+                            >ລົບ</button>
                         </li>
                     )
                 }

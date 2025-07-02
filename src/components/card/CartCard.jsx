@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Trash2, Minus, Plus } from "lucide-react";
 import useEcomStore from "../../store/ecom-store";
 import { Link } from "react-router-dom";
@@ -14,10 +14,10 @@ const CartCard = () => {
     (state) => state.actionRemoveProduct
   );
   const getTotalPrice = useEcomStore((state) => state.getTotalPrice);
-  console.log(carts);
+  // console.log(carts);
   return (
     <div>
-      <h1 className="text-2xl font-bold">ตะกร้าสินค้า</h1>
+      <h1 className="text-2xl font-bold">ກະຕ່າສິນຄ້າ</h1>
       {/* Border */}
       <div className="border p-2">
         {/* Card */}
@@ -37,7 +37,7 @@ const CartCard = () => {
                     className="w-16 h-16 bg-gray-200 
                             rounded-md flex text-center items-center"
                   >
-                    No Image
+                    ບໍ່ມີຮູບສິນຄ້າ
                   </div>
                 )}
 
@@ -84,7 +84,7 @@ const CartCard = () => {
         ))}
         {/* Total */}
         <div className="flex justify-between px-2">
-          <span>รวม</span>
+          <span>ລວມ</span>
           <span>{numberFormat(getTotalPrice())}</span>
         </div>
         {/* Button */}
@@ -93,7 +93,7 @@ const CartCard = () => {
             className="mt-4 bg-green-500 hover:bg-green-700
                  text-white w-full py-2 rounded-md shadow-md"
           >
-            ดำเนินการชำระเงิน
+            ດຳເນີນການຊຳລະເງິນ
           </button>
         </Link>
       </div>

@@ -1,5 +1,5 @@
 // rafce
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import useEcomStore from "../../store/ecom-store";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -7,7 +7,7 @@ import { numberFormat } from "../../utils/number";
 
 const SearchCard = () => {
   const getProduct = useEcomStore((state) => state.getProduct);
-  const products = useEcomStore((state) => state.products);
+  // const products = useEcomStore((state) => state.products);
   const actionSearchFilters = useEcomStore(
     (state) => state.actionSearchFilters
   );
@@ -77,18 +77,18 @@ const SearchCard = () => {
 
   return (
     <div>
-      <h1 className="text-xl font-bold mb-4">ค้นหาสินค้า</h1>
+      <h1 className="text-xl font-bold mb-4">ຄົ້ນຫາສິນຄ້າ</h1>
       {/* Search by Text */}
       <input
         onChange={(e) => setText(e.target.value)}
         type="text"
-        placeholder="ค้นหาสินค้า...."
+        placeholder="ຄົ້ນຫາສິນຄ້າ...."
         className="border rounded-md w-full mb-4 px-2"
       />
       <hr />
       {/* Search by Category */}
       <div>
-        <h1>หมวดหมู่สินค้า</h1>
+        <h1>ໝວດໝູ່ສິນຄ້າ</h1>
         <div>
           {categories.map((item, index) => (
             <div key={index} className="flex gap-2">
@@ -101,11 +101,11 @@ const SearchCard = () => {
       <hr />
       {/* Search by Price */}
       <div>
-        <h1>ค้นหาราคา</h1>
+        <h1>ຄົ້ນຫາລາຄາ</h1>
         <div>
           <div className="flex justify-between">
-            <span>Min : {numberFormat(price[0])}</span>
-            <span>Max : {numberFormat(price[1])}</span>
+            <span>ຕ່ຳສຸດ : {numberFormat(price[0])}</span>
+            <span>ສູງສຸດ : {numberFormat(price[1])}</span>
           </div>
 
           <Slider

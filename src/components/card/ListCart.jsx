@@ -1,5 +1,5 @@
 // rafce
-import React from "react";
+
 import { ListCheck } from "lucide-react";
 import useEcomStore from "../../store/ecom-store";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const ListCart = () => {
     await createUserCart(token, { cart })
       .then((res) => {
         console.log(res);
-        toast.success("บันทึกใส่ตะกร้าเรียบร้อยแล้วจ้า", {
+        toast.success("ບັນທຶກໃສ່ກະຕ່າຮຽບຮ້ອຍແລ້ວ", {
           position: "top-center",
         });
         navigate("/checkout");
@@ -35,7 +35,7 @@ const ListCart = () => {
       {/* Header */}
       <div className="flex gap-4 mb-4">
         <ListCheck size={36} />
-        <p className="text-2xl font-bold">รายการสินค้า {cart.length} รายการ</p>
+        <p className="text-2xl font-bold">ລາຍການສິນຄ້າ {cart.length} ລາຍການ</p>
       </div>
 
       {/* List */}
@@ -59,7 +59,7 @@ const ListCart = () => {
                       className="w-16 h-16 bg-gray-200 
                             rounded-md flex text-center items-center"
                     >
-                      No Image
+                      ບໍ່ມີຮູບສິນຄ້າ
                     </div>
                   )}
 
@@ -83,9 +83,9 @@ const ListCart = () => {
 
         {/* Right */}
         <div className="bg-white p-4 rounded-md shadow-md space-y-4">
-          <p className="text-2xl font-bold">ยอดรวม</p>
+          <p className="text-2xl font-bold">ລວມ</p>
           <div className="flex justify-between">
-            <span>รวมสุทธิ</span>
+            <span>ລວມທັງໝົດ</span>
             <span className="text-2xl font-bold">
               {numberFormat(getTotalPrice())}
             </span>
@@ -101,7 +101,7 @@ const ListCart = () => {
                     rounded-md text-white py-2 shadow-md hover:bg-red-700
                     "
                 >
-                  สั่งซื้อ
+                  ສັ່ງຊື້
                 </button>
               </Link>
             ) : (
@@ -111,7 +111,7 @@ const ListCart = () => {
                     rounded-md text-white py-2 shadow-md hover:bg-blue-700
                     "
                 >
-                  Login
+                  ເຂົ້າສູ່ລະບົບ
                 </button>
               </Link>
             )}
@@ -122,7 +122,7 @@ const ListCart = () => {
                     rounded-md text-white py-2 shadow-md hover:bg-gray-700
                     "
               >
-                แก้ไขรายการ
+                ແກ້ໄຂລາຍການ
               </button>
             </Link>
           </div>

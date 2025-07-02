@@ -1,5 +1,4 @@
 // rafce
-import React from 'react'
 import FormProduct from '../../components/admin/FormProduct'
 
 const Product = () => {

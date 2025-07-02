@@ -36,28 +36,28 @@ export default function CheckoutForm() {
       redirect: "if_required",
     });
 
-    console.log("payload", payload);
+    // console.log("payload", payload);
     if (payload.error) {
       setMessage(payload.error.message);
       toast.error(payload.error.message);
     } else if (payload.paymentIntent && payload.paymentIntent.status === "succeeded") {
-      console.log("Ready or Saveorder");
+      // console.log("Ready or Save Order");
       // Create Order
       try {
         await saveOrder(token, payload);
         clearCart();
-        toast.success("Payment Success!!!");
+        toast.success("ບັນທຶກຄຳສັ່ງແລ້ວ.");
         navigate("/user/history");
       } catch (err) {
         console.log(err);
-        toast.error("Failed to save your order. Please contact support.");
+        toast.error("ບໍ່ສາມາດບັນທຶກຄຳສັ່ງໄດ້.");
       }
     } else {
       const paymentIntentStatus = payload.paymentIntent ? payload.paymentIntent.status : 'unknown';
-      const warningMessage = `Payment not successful (Status: ${paymentIntentStatus}). Please try again.`;
+      const warningMessage = `ການຊຳລະເງິນບໍ່ສຳເລັດ (Status: ${paymentIntentStatus}). ກະລຸນາລອງໃໝ່.`;
       setMessage(warningMessage);
-      toast.warning("ชำระเงินไม่สำเร็จ"); // "Payment not successful"
-      console.warn('Unhandled payment status:', paymentIntentStatus);
+      toast.warning("ຊຳລະເງິນບໍ່ສຳເລັດ"); // "Payment not successful"
+      // console.warn('Payment not successful:', paymentIntentStatus);
     }
 
     setIsLoading(false);
@@ -70,7 +70,7 @@ export default function CheckoutForm() {
   return (
     <>
       <form className="space-y-6" id="payment-form" onSubmit={handleSubmit}>
-      <h1>Payment: </h1>
+      <h1>ການຊຳລະເງິນ: </h1>
         <PaymentElement id="payment-element" options={paymentElementOptions} />
         <button
           className="stripe-button"
@@ -81,7 +81,7 @@ export default function CheckoutForm() {
             {isLoading ? (
               <div className="spinner" id="spinner"></div>
             ) : (
-              "Pay now"
+              "ຊຳລະເງິນຕອນນີ້"
             )}
           </span>
         </button>

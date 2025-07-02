@@ -1,5 +1,5 @@
 // rafce
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import useEcomStore from "../../store/ecom-store";
 import { createProduct, deleteProduct } from "../../api/product";
 import { toast } from "react-toastify";
@@ -54,18 +54,18 @@ const FormProduct = () => {
       console.log(res);
       setForm(initialState);
       getProduct();
-      toast.success(`เพิ่มข้อมูล ${res.data.title} สำเร็จ`);
+      toast.success(`ເພີ່ມ ${res.data.title} ສຳເລັດ`);
     } catch (err) {
       console.log(err);
     }
   };
   const handleDelete = async (id) => {
-    if (window.confirm("จะลบจริงๆ หรอ")) {
+    if (window.confirm("ແນ່ໃຈແລ້ວບໍ? ທ່ານຕ້ອງການລົບສິນຄ້ານີ້?")) {
       try {
         // code
-        const res = await deleteProduct(token, id);
-        console.log(res);
-        toast.success("Deleted สินค้าเรียบร้อยแล้ว");
+        await deleteProduct(token, id);
+        // console.log(res);
+        toast.success("ລົບສິນຄ້າສຳເລັດ");
         getProduct();
       } catch (err) {
         console.log(err);
@@ -76,7 +76,7 @@ const FormProduct = () => {
   return (
     <div className="container mx-auto p-4 bg-white shadow-md">
       <form onSubmit={handleSubmit}>
-        <h1>เพิ่มข้อมูลสินค้า</h1>
+        <h1>ເພີ່ມຂໍ້ມູນສິນຄ້າ</h1>
         <input
           className="border"
           value={form.title}
@@ -115,7 +115,7 @@ const FormProduct = () => {
           value={form.categoryId}
         >
           <option value="" disabled>
-            Please Select
+            ກະລຸນາເລືອກ
           </option>
           {categories.map((item, index) => (
             <option key={index} value={item.id}>
@@ -132,7 +132,7 @@ const FormProduct = () => {
                 hover:scale-105 hover:-translate-y-1 hover:duration-200
                 "
         >
-          เพิ่มสินค้า
+          ເພີ່ມສິນຄ້າ
         </button>
 
         <hr />
@@ -141,14 +141,14 @@ const FormProduct = () => {
           <thead>
             <tr className="bg-gray-200 border">
               <th scope="col">No.</th>
-              <th scope="col">รูปภาพ</th>
-              <th scope="col">ชื่อสินค้า</th>
-              <th scope="col">รายละเอียด</th>
-              <th scope="col">ราคา</th>
-              <th scope="col">จำนวน</th>
-              <th scope="col">จำนวนที่ขายได้</th>
-              <th scope="col">วันที่อัปเดต</th>
-              <th scope="col">จัดการ</th>
+              <th scope="col">ຮູບສິນຄ້າ</th>
+              <th scope="col">ຊື່ສິນຄ້າ</th>
+              <th scope="col">ລາຍລະອຽດ</th>
+              <th scope="col">ລາຄາ</th>
+              <th scope="col">ຈຳນວນ</th>
+              <th scope="col">ຈຳນວນທີ່ຂາຍໄດ້</th>
+              <th scope="col">ວັນທີອັບເດດ</th>
+              <th scope="col">ຈັດການ</th>
             </tr>
           </thead>
           <tbody>
@@ -169,7 +169,7 @@ const FormProduct = () => {
                         className="w-24 h-24 bg-gray-200 rounded-md 
                                                     flex items-center justify-center shadow-sm"
                       >
-                        No Image
+                        ບໍ່ມີຮູບສິນຄ້າ
                       </div>
                     )}
                   </td>

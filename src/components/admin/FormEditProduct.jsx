@@ -1,10 +1,10 @@
 // rafce
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import useEcomStore from '../../store/ecom-store'
 import {
-    createProduct,
+    // createProduct,
     readProduct,
-    listProduct,
+    // listProduct,
     updateProduct
 } from '../../api/product'
 import { toast } from 'react-toastify'
@@ -12,10 +12,10 @@ import Uploadfile from './Uploadfile'
 import { useParams, useNavigate } from 'react-router-dom'
 
 const initialState = {
-    title: "Core i7",
+    title: "",
     description: "desc",
-    price: 200,
-    quantity: 20,
+    price: 0,
+    quantity: 0,
     categoryId: '',
     images: []
 }
@@ -39,7 +39,7 @@ const FormEditProduct = () => {
         try {
             // code
             const res = await readProduct(token, id, form)
-            console.log('res from backend', res)
+            // console.log('res from backend', res)
             setForm(res.data)
         } catch (err) {
             console.log('Err fetch data', err)
@@ -59,7 +59,7 @@ const FormEditProduct = () => {
         try {
             const res = await updateProduct(token, id, form)
             console.log(res)
-            toast.success(`เพิ่มข้อมูล ${res.data.title} สำเร็จ`)
+            toast.success(`ເພີ່ມຂໍ້ມູນ ${res.data.title} ສຳເລັດ`)
             navigate('/admin/product')
         } catch (err) {
             console.log(err)
@@ -69,7 +69,7 @@ const FormEditProduct = () => {
     return (
         <div className='container mx-auto p-4 bg-white shadow-md'>
             <form onSubmit={handleSubmit}>
-                <h1>เพิ่มข้อมูลสินค้า</h1>
+                <h1>ເພີ່ມຂໍ້ມູນສິນຄ້າ</h1>
                 <input
                     className='border'
                     value={form.title}
@@ -107,7 +107,7 @@ const FormEditProduct = () => {
                     required
                     value={form.categoryId}
                 >
-                    <option value="" disabled>Please Select</option>
+                    <option value="" disabled>ກະລຸນາເລືອກ</option>
                     {
                         categories.map((item, index) =>
                             <option key={index} value={item.id}>{item.name}</option>
@@ -118,7 +118,7 @@ const FormEditProduct = () => {
                 {/* Upload file  */}
                 <Uploadfile form={form} setForm={setForm} />
 
-                <button className='bg-blue-500'>แก้ไขสินค้า</button>
+                <button className='bg-blue-500'>ແກ້ໄຂສິນຄ້າ</button>
 
 
                 <hr />

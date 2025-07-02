@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { listProductBy } from "../../api/product";
 import ProductCard from "../card/ProductCard";
 import SwiperShowProduct from "../../utils/SwiperShowProduct";
@@ -22,13 +22,13 @@ const NewProduct = () => {
       });
   };
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <SwiperShowProduct>
       {data?.map((item, index) => (
-        <SwiperSlide>
-          <ProductCard item={item} key={index} />
+        <SwiperSlide key={index}>
+          <ProductCard item={item} />
         </SwiperSlide>
       ))}
     </SwiperShowProduct>

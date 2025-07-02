@@ -1,5 +1,5 @@
 // rafce
-import React from 'react'
+
 import FormEditProduct from '../../components/admin/FormEditProduct'
 
 const EditProduct = () => {

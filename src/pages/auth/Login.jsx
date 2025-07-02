@@ -11,8 +11,8 @@ const Login = () => {
   // Javascript
   const navigate = useNavigate();
   const actionLogin = useEcomStore((state) => state.actionLogin);
-  const user = useEcomStore((state) => state.user);
-  console.log("user form zustand", user);
+  // const user = useEcomStore((state) => state.user);
+  // console.log("user form zustand", user);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -30,7 +30,7 @@ const Login = () => {
       const res = await actionLogin(form);
       const role = res.data.payload.role;
       roleRedirect(role);
-      toast.success("Welcome Back");
+      // toast.success("Welcome Back");
     } catch (err) {
       console.log(err);
       const errMsg = err.response?.data?.message;
@@ -42,7 +42,7 @@ const Login = () => {
     if (role === "admin") {
       navigate("/admin");
     } else {
-      navigate(-1);
+       navigate("/");
     }
   };
 
@@ -52,12 +52,12 @@ const Login = () => {
   items-center justify-center bg-gray-100"
     >
       <div className="w-full shadow-md bg-white p-8 max-w-md">
-        <h1 className="text-2xl text-center my-4 font-bold">Login</h1>
+        <h1 className="text-2xl text-center my-4 font-bold">ເຂົ້າສູ່ລະບົບ</h1>
 
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
             <input
-              placeholder="Email"
+              placeholder="ອີເມວ"
               className="border w-full px-3 py-2 rounded
             focus:outline-none focus:ring-2 focus:ring-blue-500
             focus:border-transparent"
@@ -67,7 +67,7 @@ const Login = () => {
             />
 
             <input
-              placeholder="Password"
+              placeholder="ລະຫັດຜ່ານ"
               className="border w-full px-3 py-2 rounded
                     focus:outline-none focus:ring-2 focus:ring-blue-500
                     focus:border-transparent"
@@ -81,7 +81,7 @@ const Login = () => {
              hover:bg-blue-700
              "
             >
-              Login
+              ເຂົ້າສູ່ລະບົບ
             </button>
           </div>
         </form>

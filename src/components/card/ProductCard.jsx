@@ -1,9 +1,9 @@
 // rafce
-import React from "react";
 import { ShoppingCart } from "lucide-react";
 import useEcomStore from "../../store/ecom-store";
 import { numberFormat } from "../../utils/number";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const ProductCard = ({ item }) => {
   const actionAddtoCart = useEcomStore((state) => state.actionAddtoCart);
@@ -31,7 +31,7 @@ const ProductCard = ({ item }) => {
                     text-center flex items-center justify-center shadow
                     "
             >
-              No Image
+              ບໍ່ມີຮູບສິນຄ້າ
             </div>
           )}
         </div>
@@ -55,6 +55,18 @@ const ProductCard = ({ item }) => {
       </div>
     </motion.div>
   );
+};
+ProductCard.propTypes = {
+  item: PropTypes.shape({
+    images: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string,
+      })
+    ),
+    title: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+  }).isRequired,
 };
 
 export default ProductCard;

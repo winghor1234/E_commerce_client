@@ -1,5 +1,5 @@
 // rafce
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getOrdersAdmin, changeOrderStatus } from "../../api/admin";
 import useEcomStore from "../../store/ecom-store";
 import { toast } from "react-toastify";
@@ -30,9 +30,9 @@ const TableOrders = () => {
     // code
     console.log(orderId, orderStatus);
     changeOrderStatus(token, orderId, orderStatus)
-      .then((res) => {
-        console.log(res);
-        toast.success("Update Status Success!!!");
+      .then(() => {
+        // console.log(res);
+        toast.success("ອັບເດດສະຖານະສຳເລັດ");
         handleGetOrder(token);
       })
       .catch((err) => {
@@ -42,13 +42,13 @@ const TableOrders = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case "Not Process":
+      case "ຍັງບໍ່ໄດ້ດຳເນີນການ":
         return "bg-gray-200";
-      case "Processing":
+      case "ກຳລັງດຳເນີນການ":
         return "bg-blue-200";
-      case "Completed":
+      case "ສຳເລັດ":
         return "bg-green-200";
-      case "Cancelled":
+      case "ຍົກເລີກ":
         return "bg-red-200";
     }
   };
@@ -59,19 +59,19 @@ const TableOrders = () => {
         <table className="w-full">
           <thead>
             <tr className="bg-gray-200 border">
-              <th>ลำดับ</th>
-              <th>ผู้ใช้งาน</th>
-              <th>วันที่</th>
-              <th>สินค้า</th>
-              <th>รวม</th>
-              <th>สถานะ</th>
-              <th>จัดการ</th>
+              <th>ລຳດັບ</th>
+              <th>ຜູ້ໃຊ້ງານ</th>
+              <th>ວັນທີ</th>
+              <th>ສິນຄ້າ</th>
+              <th>ລວມ</th>
+              <th>ສະຖານະ</th>
+              <th>ຈັດການ</th>
             </tr>
           </thead>
 
           <tbody>
             {orders?.map((item, index) => {
-              console.log(item);
+              // console.log(item);
               return (
                 <tr key={index} className="border">
                   <td className="text-center">{index + 1}</td>
@@ -114,10 +114,10 @@ rounded-full`}
                         handleChangeOrderStatus(token, item.id, e.target.value)
                       }
                     >
-                      <option>Not Process</option>
-                      <option>Processing</option>
-                      <option>Completed</option>
-                      <option>Cancelled</option>
+                      <option>ຍັງບໍ່ໄດ້ດຳເນີນການ</option>
+                      <option>ກຳລັງດຳເນີນການ</option>
+                      <option>ສຳເລັດ</option>
+                      <option>ຍົກເລີກ</option>
                     </select>
                   </td>
                 </tr>

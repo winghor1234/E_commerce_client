@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import{ useState, useEffect } from 'react'
 import useEcomStore from '../store/ecom-store'
 import { currentAdmin } from '../api/auth'
 import LoadingToRedirect from './LoadingToRedirect'
+import PropTypes from 'prop-types'
 
 
 const ProtectRouteAdmin = ({ element }) => {
@@ -13,12 +14,16 @@ const ProtectRouteAdmin = ({ element }) => {
         if (user && token) {
             // send to back
             currentAdmin(token)
-                .then((res) => setOk(true))
-                .catch((err) => setOk(false))
+                .then(() => setOk(true))
+                .catch(() => setOk(false))
         }
     }, [])
 
     return ok ? element : <LoadingToRedirect />
 }
+ProtectRouteAdmin.propTypes = {
+    element: PropTypes.node.isRequired,
+}
+
 
 export default ProtectRouteAdmin

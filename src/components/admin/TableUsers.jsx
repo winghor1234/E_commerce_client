@@ -1,5 +1,5 @@
 // rafce
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { getListAllUsers } from "../../api/admin";
 import useEcomStore from "../../store/ecom-store";
 import { changeUserStatus, changeUserRole } from "../../api/admin";
@@ -28,10 +28,10 @@ const TableUsers = () => {
       enabled: !userStatus,
     };
     changeUserStatus(token, value)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        // console.log(res);
         handleGetUsers(token);
-        toast.success("Update Status Success!!");
+        toast.success("ອັບເດດສະຖານະສຳເລັດ");
       })
       .catch((err) => console.log(err));
   };
@@ -46,23 +46,23 @@ const TableUsers = () => {
       .then((res) => {
         console.log(res);
         handleGetUsers(token);
-        toast.success("Update Role Success!!");
+        toast.success("ອັບເດດສະຖານະສຳເລັດ");
       })
       .catch((err) => console.log(err));
   };
 
-  console.log(users);
+  // console.log(users);
   return (
     <div className="container mx-auto p-4 bg-white shadow-md">
       <table className="w-full">
         <thead>
           <tr>
-            <th>ลำดับ</th>
-            <th>Email</th>
+            <th>ລຳດັບ</th>
+            <th>ອິເມວ</th>
             {/* <th>วันที่แก้ไขล่าสุด</th> */}
-            <th>สิทธิ์</th>
-            <th>สถานะ</th>
-            <th>จัดการ</th>
+            <th>ສິດ</th>
+            <th>ສະຖານະ</th>
+            <th>ຈັດການ</th>
           </tr>
         </thead>
 
@@ -78,19 +78,19 @@ const TableUsers = () => {
                   onChange={(e) => handleChangeUserRole(el.id, e.target.value)}
                   value={el.role}
                 >
-                  <option>user</option>
-                  <option>admin</option>
+                  <option>ຜູ້ໃຊ້</option>
+                  <option>ຜູ້ດູເເລ</option>
                 </select>
               </td>
 
-              <td>{el.enabled ? "Active" : "Inactive"}</td>
+              <td>{el.enabled ? "ເປີດໃຊ້ງານ" : "ປິດໃຊ້ງານ"}</td>
               <td>
                 <button
                   className="bg-yellow-500 text-white 
                   p-1 rounded-md shadow-md"
                   onClick={() => handleChangeUserStatus(el.id, el.enabled)}
                 >
-                  {el.enabled ? "Disable" : "Enable"}
+                  {el.enabled ? "ເປີດໃຊ້ງານ" : "ປິດໃຊ້ງານ"}
                 </button>
               </td>
             </tr>

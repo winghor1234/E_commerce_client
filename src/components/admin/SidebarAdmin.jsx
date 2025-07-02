@@ -1,4 +1,4 @@
-import React from "react";
+
 import { NavLink } from "react-router-dom";
 import {
   LayoutDashboard,
@@ -43,7 +43,7 @@ const SidebarAdmin = () => {
           }
         >
           <UserCog className="mr-2" />
-          Manage
+          ຈັດການ
         </NavLink>
 
         <NavLink
@@ -55,7 +55,7 @@ const SidebarAdmin = () => {
           }
         >
           <SquareChartGantt className="mr-2" />
-          Category
+          ປະເພດ
         </NavLink>
 
         <NavLink
@@ -67,7 +67,7 @@ const SidebarAdmin = () => {
           }
         >
           <ShoppingBasket className="mr-2" />
-          Product
+          ສິນຄ້າ
         </NavLink>
 
         <NavLink
@@ -79,7 +79,7 @@ const SidebarAdmin = () => {
           }
         >
           <ListOrdered className="mr-2" />
-          Orders
+          ການສັ່ງຊື້
         </NavLink>
       </nav>
 
@@ -92,7 +92,7 @@ const SidebarAdmin = () => {
           }
         >
           <LogOut  className="mr-2" />
-          Logout
+          ອອກລະບົບ
         </NavLink>
       </div>
     </div>

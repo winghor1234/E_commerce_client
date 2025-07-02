@@ -1,6 +1,6 @@
 // rafce
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getOrders } from "../../api/user";
 import useEcomStore from "../../store/ecom-store";
 import { dateFormat } from "../../utils/dateformat";
@@ -29,20 +29,20 @@ const HistoryCard = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case "Not Process":
+      case "ຍັງບໍ່ໄດ້ດຳເນີນການ":
         return "bg-gray-200";
-      case "Processing":
+      case "ກຳລັງດຳເນີນການ":
         return "bg-blue-200";
-      case "Completed":
+      case "ສຳເລັດ":
         return "bg-green-200";
-      case "Cancelled":
+      case "ຍົກເລີກ":
         return "bg-red-200";
     }
   };
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-bold">ประวัติการสั่งซื้อ</h1>
+      <h1 className="text-2xl font-bold">ປະຫວັດການສັ່ງຊື້</h1>
       {/* คลุม */}
       <div className="space-y-4">
         {/* Card Loop Order*/}
@@ -53,7 +53,7 @@ const HistoryCard = () => {
               {/* ทีมงาน header */}
               <div className="flex justify-between mb-2">
                 <div>
-                  <p className="text-sm">Order date</p>
+                  <p className="text-sm">ວັນທີສັ່ງຊື້</p>
                   <p className="font-bold">{dateFormat(item.updatedAt)}</p>
                 </div>
                 <div>
@@ -68,10 +68,10 @@ const HistoryCard = () => {
                 <table className="border w-full">
                   <thead>
                     <tr className="bg-gray-200">
-                      <th>สินค้า</th>
-                      <th>ราคา</th>
-                      <th>จำนวน</th>
-                      <th>รวม</th>
+                      <th>ສິນຄ້າ</th>
+                      <th>ລາຄາ</th>
+                      <th>ຈຳນວນ</th>
+                      <th>ລວມ</th>
                     </tr>
                   </thead>
 
@@ -97,7 +97,7 @@ const HistoryCard = () => {
               {/* ทีมงาน Total */}
               <div>
                 <div className="text-right">
-                  <p>ราคาสุทธิ</p>
+                  <p>ລາຄາລວມ</p>
                   <p>{numberFormat(item.cartTotal)}</p>
                 </div>
               </div>

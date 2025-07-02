@@ -1,10 +1,11 @@
 // rafce
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 import Resize from 'react-image-file-resizer'
 import { removeFiles, uploadFiles } from '../../api/product'
 import useEcomStore from '../../store/ecom-store'
 import { Loader } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 const Uploadfile = ({ form, setForm }) => {
     // Javascript
@@ -24,7 +25,7 @@ const Uploadfile = ({ form, setForm }) => {
                 // Validate
                 const file = files[i]
                 if (!file.type.startsWith('image/')) {
-                    toast.error(`File ${file.name} บ่แม่นรูป`)
+                    toast.error(`ໄຟລ໌ ${file.name} ບໍ່ແມ່ນຮູບພາບ`)
                     continue
                 }
                 // Image Resize 
@@ -46,7 +47,7 @@ const Uploadfile = ({ form, setForm }) => {
                                     images: allFiles
                                 })
                                 setIsLoading(false)
-                                toast.success('Upload image Sucess!!!')
+                                toast.success('ອັບເດດຮູບພາບສຳເລັດ')
                             })
                             .catch((err) => {
                                 console.log(err)
@@ -60,7 +61,7 @@ const Uploadfile = ({ form, setForm }) => {
             }
         }
     }
-    console.log(form)
+    // console.log(form)
 
     const handleDelete = (public_id) => {
         const images = form.images
@@ -71,7 +72,7 @@ const Uploadfile = ({ form, setForm }) => {
                     return item.public_id !== public_id
                 })
 
-                console.log('filterImages', filterImages)
+                // console.log('filterImages', filterImages)
                 setForm({
                     ...form,
                     images: filterImages
@@ -117,5 +118,16 @@ const Uploadfile = ({ form, setForm }) => {
         </div>
     )
 }
+Uploadfile.propTypes = {
+    form: PropTypes.shape({
+        images: PropTypes.arrayOf(
+            PropTypes.shape({
+                url: PropTypes.string,
+                public_id: PropTypes.string
+            })
+        ).isRequired
+    }).isRequired,
+    setForm: PropTypes.func.isRequired
+};
 
 export default Uploadfile

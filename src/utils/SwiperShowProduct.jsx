@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import axios from "axios";
+
+import { Swiper,  } from "swiper/react";
+
 
 // Import Swiper styles
 import "swiper/css";
@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
+import PropTypes from "prop-types";
 
 const SwiperShowProduct = ({ children }) => {
   return (
@@ -48,6 +49,10 @@ const SwiperShowProduct = ({ children }) => {
       {children}
     </Swiper>
   );
+};
+
+SwiperShowProduct.propTypes = {
+  children: PropTypes.node,
 };
 
 export default SwiperShowProduct;

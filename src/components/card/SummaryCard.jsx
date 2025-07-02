@@ -35,11 +35,11 @@ const SummaryCard = () => {
 
   const hdlSaveAddress = () => {
     if (!address) {
-      return toast.warning("Please fill address");
+      return toast.warning("ກະລຸນາປ້ອນທີ່ຢູ່ຂອງທ່ານ");
     }
     saveAddress(token, address)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         toast.success(res.data.message);
         setAddressSaved(true);
       })
@@ -49,7 +49,7 @@ const SummaryCard = () => {
   };
   const hdlGoToPayment = () => {
     if (!addressSaved) {
-      return toast.warning("กรุณากรอกทีอยู่ก่อนจ้า");
+      return toast.warning("ກະລຸນາປ້ອນທີ່ຢູ່ຂອງທ່ານກ່ອນ");
     }
     navigate("/user/payment");
   };
@@ -65,11 +65,11 @@ const SummaryCard = () => {
             className="bg-gray-100 p-4 rounded-md 
           border shadow-md space-y-4"
           >
-            <h1 className="font-bold text-lg">ที่อยู่ในการจัดส่ง</h1>
+            <h1 className="font-bold text-lg">ທີ່ຢູ່ໃນການຈັດສົ່ງ</h1>
             <textarea
               required
               onChange={(e) => setAddress(e.target.value)}
-              placeholder="กรุณากรอกที่อยู่"
+              placeholder="ກະລຸນາປ້ອນທີ່ຢູ່"
               className="w-full px-2 rounded-md"
             />
             <button
@@ -78,7 +78,7 @@ const SummaryCard = () => {
             px-4 py-2 rounded-md shadow-md hover:bg-blue-700
             hover:scale-105 hover:translate-y-1 hover:duration-200"
             >
-              Save Address
+              ບັນທຶກທີ່ຢູ່
             </button>
           </div>
         </div>
@@ -89,7 +89,7 @@ const SummaryCard = () => {
             className="bg-gray-100 p-4 rounded-md 
           border shadow-md space-y-4"
           >
-            <h1 className="text-lg font-bold">คำสั่งซื้อของคุณ</h1>
+            <h1 className="text-lg font-bold">ຄຳສັ່ງຊື້ຂອງທ່ານ</h1>
 
             {/* Item List */}
 
@@ -99,7 +99,7 @@ const SummaryCard = () => {
                   <div>
                     <p className="font-bold">{item.product.title}</p>
                     <p className="text-sm">
-                      จำนวน : {item.count} x {numberFormat(item.product.price) }
+                      ຈຳນວນ : {item.count} x {numberFormat(item.product.price) }
                     </p>
                   </div>
 
@@ -114,11 +114,11 @@ const SummaryCard = () => {
 
             <div>
               <div className="flex justify-between">
-                <p>ค่าจัดส่ง:</p>
+                <p>ຄ່າຈັດສົ່ງ:</p>
                 <p>0.00</p>
               </div>
               <div className="flex justify-between">
-                <p>ส่วนลด:</p>
+                <p>ສ່ວນຫຼູດ:</p>
                 <p>0.00</p>
               </div>
             </div>
@@ -126,7 +126,7 @@ const SummaryCard = () => {
             <hr />
             <div>
               <div className="flex justify-between">
-                <p className="font-bold">ยอดรวมสุทธิ:</p>
+                <p className="font-bold">ລາຄາລວມ:</p>
                 <p className="text-red-500 font-bold text-lg">{numberFormat(cartTotal) }</p>
               </div>
             </div>
@@ -139,7 +139,7 @@ const SummaryCard = () => {
                 className="bg-green-400 w-full p-2 rounded-md
               shadow-md text-white hover:bg-green-600"
               >
-                ดำเนินการชำระเงิน
+                ດຳເນີນການຊຳລະເງິນ
               </button>
             </div>
           </div>

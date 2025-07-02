@@ -1,6 +1,6 @@
 // rafce
 // rfce
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useEcomStore from "../store/ecom-store";
 import { ChevronDown } from "lucide-react";
@@ -18,14 +18,14 @@ function MainNav() {
     setIsOpen(!isOpen);
   };
 
-  console.log(carts.length);
+  // console.log(carts.length);
   return (
     <nav className="bg-white shadow-md">
       <div className="mx-auto px-4">
         <div className="flex justify-between h-16">
           <div className="flex items-center gap-6">
             <Link to={"/"} className="text-2xl font-bold">
-              LOGO
+              ໂລໂກ
             </Link>
 
             <NavLink
@@ -36,7 +36,7 @@ function MainNav() {
               }
               to={"/"}
             >
-              Home
+              ໜ້າຫຼັກ
             </NavLink>
 
             <NavLink
@@ -47,7 +47,7 @@ function MainNav() {
               }
               to={"/shop"}
             >
-              Shop
+              ຮ້ານການຄໍາສັ່ງ
             </NavLink>
             {/* Badge */}
 
@@ -59,7 +59,7 @@ function MainNav() {
               }
               to={"/cart"}
             >
-              Cart
+              ກະຕ່າ
               {carts.length > 0 && (
                 <span
                   className="absolute top-0
@@ -94,12 +94,12 @@ function MainNav() {
                   to={"/user/history"}
                   className="block px-4 py-2 hover:bg-gray-200"
                 >
-                  History
+                  ປະຫວັດ
                 </Link>
                 <button 
                   onClick={()=>logout()}
                   className="block px-4 py-2 hover:bg-gray-200">
-                  Logout
+                  ອອກຈາກລະບົບ
                 </button>
               </div>
             )}
@@ -113,7 +113,7 @@ function MainNav() {
               }
               to={"/register"}
             >
-              Register
+              ລົງທະບຽນ
             </NavLink>
 
             <NavLink
@@ -124,7 +124,7 @@ function MainNav() {
               }
               to={"/login"}
             >
-              Login
+              ເຂົ້າສູ່ລະບົບ
             </NavLink>
           </div>
           }

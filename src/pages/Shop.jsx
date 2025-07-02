@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import  { useEffect } from 'react'
 import ProductCard from '../components/card/ProductCard'
 import useEcomStore from '../store/ecom-store'
 import SearchCard from '../components/card/SearchCard'
@@ -22,7 +22,7 @@ const Shop = () => {
 
       {/* Product */}
       <div className='w-1/2 p-4 h-screen overflow-y-auto'>
-        <p className='text-2xl font-bold mb-4'>สินค้าทั้งหมด</p>
+        <p className='text-2xl font-bold mb-4'>ສິນຄ້າທັງໝົດ</p>
         <div className='flex flex-wrap gap-4'>
           {/* Product Card */}
           {

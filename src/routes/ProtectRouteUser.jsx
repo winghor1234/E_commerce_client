@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import useEcomStore from '../store/ecom-store'
 import { currentUser } from '../api/auth'
 import LoadingToRedirect from './LoadingToRedirect'
@@ -13,12 +14,15 @@ const ProtectRouteUser = ({ element }) => {
         if (user && token) {
             // send to back
             currentUser(token)
-                .then((res) => setOk(true))
-                .catch((err) => setOk(false))
+                .then(() => setOk(true))
+                .catch(() => setOk(false))
         }
     }, [])
 
     return ok ? element : <LoadingToRedirect />
+}
+ProtectRouteUser.propTypes = {
+    element: PropTypes.node.isRequired,
 }
 
 export default ProtectRouteUser
