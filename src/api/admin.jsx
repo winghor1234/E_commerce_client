@@ -1,6 +1,6 @@
 import axios from '../utils/axios';
 
-// http://localhost:8888/api/admin/orders
+// http://localhost:5002/api/admin/orders
 
 export const getOrdersAdmin = async (token) => {
   // code body

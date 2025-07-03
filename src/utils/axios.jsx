@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://ecommerceserver-production-70c3.up.railway.app', // <-- ใส่ของคุณที่ Railway ให้มา
+  baseURL: 'https://ecommerceserver-production-70c3.up.railway.app', 
   withCredentials: true, // เผื่อคุณใช้ cookie ใน auth
 });
 

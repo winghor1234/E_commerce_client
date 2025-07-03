@@ -50,7 +50,7 @@ const ecomStore = (set, get) => ({
     }, 0);
   },
   actionLogin: async (form) => {
-    const res = await axios.post("http://localhost:8888/api/login", form);
+    const res = await axios.post("http://localhost:5002/api/login", form);
     set({
       user: res.data.payload,
       token: res.data.token,
@@ -58,7 +58,7 @@ const ecomStore = (set, get) => ({
     return res;
   },
   actionRegister: async (form) => {
-    const res = await axios.post("http://localhost:8888/api/register", form);
+    const res = await axios.post("http://localhost:5002/api/register", form);
     return res;
   },
   getCategory: async () => {
